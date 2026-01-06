@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const database = require("./config/database");
+const errorHandler = require("./middlewares/error.middleware");
 
 //init middlewares
 app.use(express.json());
@@ -12,6 +13,9 @@ database.connect();
 
 //init router
 app.use("/api/categories", require("./modules/category/category.route"));
+
+//handler error
+app.use(errorHandler);
 
 app.get("/", (req, res) => {
   res.send("Hello world");

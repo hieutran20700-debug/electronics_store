@@ -1,17 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const CategoryController = require("./category.controller");
+const validate = require("../../middlewares/validate.middleware");
+const rules = require("./category.validate");
 
-router.post("/", CategoryController.create);
+router.post("/", validate(rules.createCategory), CategoryController.create);
 
 router.get("/", CategoryController.getAll);
 
-router.put("/:id", CategoryController.update);
+router.put("/:id", validate(rules.updateCategory), CategoryController.update);
 
 router.patch("/:id/deactivate", CategoryController.deactivate);
 
-router.get("/me", (req, res) => {
-    res.send("ok");
-})
-
-module.exports = router
+module.exports = router;

@@ -1,17 +1,18 @@
 const CategoryRepository = require("./category.repository");
 const Category = require("./category.entity");
+const CreateError = require("../../utils/create.error");
 
 class CategoryService {
   async createCategory({ name, slug, description, parentId }) {
     const existed = await CategoryRepository.findBySlug(slug);
     if (existed) {
-      throw new Error("Category slug already exists");
+      throw CreateError.createError(400, "Category slug already exists");
     }
 
     if (parentId) {
       const parent = await CategoryRepository.findById(parentId);
       if (!parent) {
-        throw new Error("Parent category not found");
+        throw CreateError.createError(404, "Parent category not found");
       }
     }
 
@@ -25,23 +26,23 @@ class CategoryService {
     return CategoryRepository.create(category);
   }
 
-  async getAllCategories(){
+  async getAllCategories() {
     return CategoryRepository.findAll();
   }
 
-  async updateCategory(id, {name, description}){
+  async updateCategory(id, { name, description }) {
     const category = await CategoryRepository.findById(id);
-    if(!category){
-        throw new Error("Category not found");
+    if (!category) {
+      throw CreateError.createError(404, "Category not found");
     }
-    category.updateInfo({name, description});
+    category.updateInfo({ name, description });
     return CategoryRepository.update(id, category);
   }
 
-  async deactivateCategory(id){
+  async deactivateCategory(id) {
     const category = await CategoryRepository.findById(id);
-    if(!category){
-        throw new Error("Category not found");
+    if (!category) {
+      throw CreateError.createError(404, "Category not found");
     }
     category.deactivate();
     return CategoryRepository.update(id, category);
