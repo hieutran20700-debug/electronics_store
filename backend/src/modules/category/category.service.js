@@ -30,13 +30,30 @@ class CategoryService {
     return CategoryRepository.findAll();
   }
 
+  async getCategoryById(id) {
+    const category = await CategoryRepository.findById(id);
+    if (!category) {
+      throw CreateError.createError(404, "Category not found");
+    }
+    return category;
+  }
+
   async updateCategory(id, { name, description }) {
     const category = await CategoryRepository.findById(id);
     if (!category) {
       throw CreateError.createError(404, "Category not found");
     }
     category.updateInfo({ name, description });
-    return CategoryRepository.update(id, category);
+    return CategoryRepository.update(category);
+  }
+
+  async activateCategory(id) {
+    const category = await CategoryRepository.findById(id);
+    if (!category) {
+      throw CreateError.createError(404, "Category not found");
+    }
+    category.activate();
+    return await CategoryRepository.update(category);
   }
 
   async deactivateCategory(id) {
@@ -45,7 +62,25 @@ class CategoryService {
       throw CreateError.createError(404, "Category not found");
     }
     category.deactivate();
-    return CategoryRepository.update(id, category);
+    return await CategoryRepository.update(category);
+  }
+
+  async softDeleteCategory(id) {
+    const category = await CategoryRepository.findById(id);
+    if (!category) {
+      throw CreateError.createError(404, "Category not found");
+    }
+    category.softDelete();
+    return CategoryRepository.update(category);
+  }
+
+  async restoreCategory(id) {
+    const category = await CategoryRepository.findByIdIncludeDeleted(id);
+    if (!category) {
+      throw CreateError.createError(404, "Category not found in trash");
+    }
+    category.restore();
+    return await CategoryRepository.update(category);
   }
 }
 

@@ -13,6 +13,7 @@ database.connect();
 
 //init router
 app.use("/api/categories", require("./modules/category/category.route"));
+app.use("/api/products", require("./modules/product/product.route"));
 
 //handler error
 app.use(errorHandler);

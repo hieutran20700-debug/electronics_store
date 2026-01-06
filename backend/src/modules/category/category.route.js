@@ -10,6 +10,6 @@ router.get("/", CategoryController.getAll);
 
 router.put("/:id", validate(rules.updateCategory), CategoryController.update);
 
-router.patch("/:id/deactivate", CategoryController.deactivate);
+router.delete("/:id", CategoryController.delete);
 
 module.exports = router;

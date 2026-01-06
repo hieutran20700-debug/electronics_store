@@ -15,6 +15,10 @@ class CategoryRepository {
       description: doc.description,
       parentId: doc.parentId ? doc.parentId.toString() : null,
       isActive: doc.isActive,
+
+      isDeleted: doc.isDeleted,
+      deletedAt: doc.deletedAt,
+
       createdAt: doc.createdAt,
       updatedAt: doc.updatedAt,
     });
@@ -30,6 +34,9 @@ class CategoryRepository {
       description: entity.description,
       parentId: entity.parentId || null,
       isActive: entity.isActive,
+
+      isDeleted: entity.isDeleted,
+      deletedAt: entity.deletedAt,
     };
   }
 
@@ -40,31 +47,33 @@ class CategoryRepository {
   }
 
   async findById(id) {
+    const doc = await CategorySchema.findOne({ _id: id, isDeleted: false });
+    return this.toEntity(doc);
+  }
+
+  async findByIdIncludeDeleted(id) {
     const doc = await CategorySchema.findById(id);
     return this.toEntity(doc);
   }
 
   async findBySlug(slug) {
-    const doc = await CategorySchema.findOne({ slug });
+    const doc = await CategorySchema.findOne({ slug, isDeleted: false });
     return this.toEntity(doc);
   }
 
   async findAll() {
-    const docs = await CategorySchema.find();
+    const docs = await CategorySchema.find({ isDeleted: false });
     return docs.map((doc) => this.toEntity(doc));
   }
 
-  async update(id, categoryEntity) {
+  async update(categoryEntity) {
     const data = this.toPersistence(categoryEntity);
-    const doc = await CategorySchema.findByIdAndUpdate(id, data, {
-      new: true,
-    });
+    const doc = await CategorySchema.findByIdAndUpdate(
+      categoryEntity.id,
+      data,
+      { new: true }
+    );
     return this.toEntity(doc);
-  }
-
-  async delete(id) {
-    await CategoryModel.findByIdAndDelete(id);
-    return true;
   }
 }
 
