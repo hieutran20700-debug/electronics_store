@@ -71,9 +71,30 @@ class ProductService {
     const product = await ProductRepository.findById(id);
     if (!product) throw CreateError.createError(404, "Product not found");
 
-    // Gọi method của Entity
-    product.updateInfo(payload);
+    // --- 1. CHECK LOGIC UPDATE SLUG ---
+    // Nếu có gửi slug mới VÀ slug đó khác slug hiện tại
+    if (payload.slug && payload.slug !== product.slug) {
+      const foundSlug = await ProductRepository.findBySlug(payload.slug);
+      if (foundSlug) {
+        throw CreateError.createError(400, "Product slug already exists");
+      }
+    }
 
+    // --- 2. CHECK LOGIC UPDATE CATEGORY ---
+    // Nếu có đổi danh mục, phải check xem danh mục mới có tồn tại không
+    if (
+      payload.categoryId &&
+      payload.categoryId !== product.categoryId.toString()
+    ) {
+      const foundCategory = await CategoryRepository.findById(
+        payload.categoryId
+      );
+      if (!foundCategory) {
+        throw CreateError.createError(400, "Category not found");
+      }
+    }
+
+    product.updateInfo(payload);
     return await ProductRepository.update(product);
   }
 

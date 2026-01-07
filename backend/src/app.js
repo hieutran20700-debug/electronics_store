@@ -14,6 +14,7 @@ database.connect();
 //init router
 app.use("/api/categories", require("./modules/category/category.route"));
 app.use("/api/products", require("./modules/product/product.route"));
+app.use("/api/user", require("./modules/user/user.router"));
 
 //handler error
 app.use(errorHandler);

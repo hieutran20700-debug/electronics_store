@@ -75,6 +75,13 @@ class CategoryRepository {
     );
     return this.toEntity(doc);
   }
+
+  async countChildren(parentId) {
+    return CategorySchema.countDocuments({
+      parentId,
+      isDeleted: false,
+    });
+  }
 }
 
 module.exports = new CategoryRepository();

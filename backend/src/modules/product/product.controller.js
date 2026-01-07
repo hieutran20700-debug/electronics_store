@@ -13,7 +13,7 @@ class ProductController {
     }
   }
 
-  async getAll(req, res, next) {
+  async getAllProducts(req, res, next) {
     try {
       const products = await ProductService.getAllProducts();
       res.status(200).json({
@@ -25,7 +25,7 @@ class ProductController {
     }
   }
 
-  async getOne(req, res, next) {
+  async getProductById(req, res, next) {
     try {
       const { id } = req.params;
       const product = await ProductService.getProductById(id);
@@ -38,10 +38,22 @@ class ProductController {
     }
   }
 
+  async getProductBySlug(req, res, next) {
+    try {
+      const { slug } = req.params;
+      const product = await ProductService.getProductBySlug(slug);
+      res.status(200).json({
+        message: "Get product detail by slug successfully",
+        data: product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async addVariant(req, res, next) {
     try {
       const { id } = req.params;
-      // Body gửi lên là { sku: "IP15-RED", price: 1000, ... }
       const product = await ProductService.addVariant(id, req.body);
       res.status(200).json({
         message: "Add variant successfully",
@@ -65,10 +77,49 @@ class ProductController {
     }
   }
 
-  async delete(req, res, next) {
+  async activateProduct(req, res, next) {
     try {
       const { id } = req.params;
-      const product = await ProductService.deleteProduct(id);
+      const product = await ProductService.activateProduct(id);
+      res.status(200).json({
+        message: "Product activated successfully",
+        data: product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async deactivateProduct(req, res, next) {
+    try {
+      const { id } = req.params;
+      const product = await ProductService.deactivateProduct(id);
+      res.status(200).json({
+        message: "Product deactivated successfully",
+        data: product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async restoreProduct(req, res, next) {
+    try {
+      const { id } = req.params;
+      const product = await ProductService.restoreProduct(id);
+      res.status(200).json({
+        message: "Product restored successfully",
+        data: product,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async softDelete(req, res, next) {
+    try {
+      const { id } = req.params;
+      const product = await ProductService.softDeleteProduct(id);
       res.status(200).json({
         message: "Product deleted successfully",
         data: product,

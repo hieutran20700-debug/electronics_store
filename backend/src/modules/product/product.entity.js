@@ -82,13 +82,14 @@ class Product {
     this.isDeleted = true;
     this.isActive = false;
     this.updatedAt = new Date();
+    this.deletedAt = new Date();
   }
 
   restore() {
     this.isDeleted = false;
     this.deletedAt = null;
     this.updatedAt = new Date();
-    // Logic: Khôi phục xong thì cứ để ẩn (isActive cũ hoặc false), admin duyệt lại rồi bật sau
+    this.isActive = true;
   }
 }
 
