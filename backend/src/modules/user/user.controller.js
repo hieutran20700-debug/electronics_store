@@ -89,7 +89,7 @@ class UserController {
   }
 
   // DELETE /api/users/:id
-  async deleteUser(req, res, next) {
+  async softDelete(req, res, next) {
     try {
       // Admin xóa người khác dựa trên ID trên URL
       const userId = req.params.id;

@@ -1,0 +1,15 @@
+.admin-wrapper{
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.admin-content{
+    padding: 15px 12px;
+    min-height: 100vh;
+}
+
+.admin-main{
+    flex: 1;
+}
+

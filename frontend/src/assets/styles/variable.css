@@ -1,0 +1,12 @@
+:root {
+  --color-primary: #009981;
+  --color-primary-bold: #066d5d;
+  --color-secondary: #757575;
+  --color-orange: #fc521d;
+
+  --sidebar-bg: #1e1e2d;
+  --sidebar-text: #a2a3b7;
+  --sidebar-active: #3699ff;
+  --header-height: 60px;
+  --sidebar-width: 260px;
+}

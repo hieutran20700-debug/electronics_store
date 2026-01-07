@@ -1,0 +1,75 @@
+.admin-header {
+  padding: 12px;
+}
+
+.admin-header-wrapper {
+  padding: 12px 40px;
+  background-color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+.username {
+  font-size: 14px;
+  text-align: left;
+}
+
+.email{
+    font-size: 11px;
+    color: var(--color-secondary);
+}
+
+.dropdown-toggle {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.user-info {
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 8.5px 15px;
+  border-radius: 30px;
+}
+
+.custom-dropdown-menu {
+  transform: translate(13px, 47px) !important;
+  min-width: 180px;
+  border-radius: 8px;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.admin-options{
+    display: flex;
+    gap: 12px;
+}
+
+.admin-options .admin-options-item{
+    padding: 8px 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group-text{
+    cursor: pointer;
+}
+
+.header-right{
+    display: flex;
+    gap: 20px;
+}
+
+.header-left{
+    min-width: 400px;
+}

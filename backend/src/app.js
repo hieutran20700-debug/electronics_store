@@ -6,7 +6,12 @@ const errorHandler = require("./middlewares/error.middleware");
 
 //init middlewares
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Link của Frontend (sau này sửa sau)
+    credentials: true, // Cho phép nhận Cookie (RefreshToken)
+  })
+);
 
 //init database
 database.connect();
