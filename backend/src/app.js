@@ -15,6 +15,8 @@ database.connect();
 app.use("/api/categories", require("./modules/category/category.route"));
 app.use("/api/products", require("./modules/product/product.route"));
 app.use("/api/user", require("./modules/user/user.router"));
+app.use("/api/token", require("./modules/token/token.route"));
+app.use("/api/auth", require("./modules/auth"));
 
 //handler error
 app.use(errorHandler);
