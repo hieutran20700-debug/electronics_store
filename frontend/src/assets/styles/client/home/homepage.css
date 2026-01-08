@@ -31,7 +31,14 @@
 }
 
 .slider-wrapper{
-    padding: 8px;
+    padding: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+    border-radius: 8px;
+}
+
+.products{
+    padding: 12px;
     background-color: #fff;
     box-shadow: 0 0 8px rgba(0,0,0,0.3);
     border-radius: 8px;

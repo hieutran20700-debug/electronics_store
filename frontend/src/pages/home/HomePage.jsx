@@ -105,14 +105,14 @@ const HomePage = () => {
         <div className="slider-wrapper">
           <Slider images={sliderData} />
         </div>
-        <Row className="mt-4">
-          <Col xs={12} md={5}>
-            <img className="subbanner w-100 h-100" src={Subbanner} alt="" />
-          </Col>
-          <Col xs={12} md={3}>
+        <div className="products mt-4">
+          <Row>
+            <Col xs={12} md={6}>
+              <img className="subbanner w-100 h-100 rounded" src={Subbanner} alt="" />
+            </Col>
             <Product />
-          </Col>
-        </Row>
+          </Row>
+        </div>
       </Col>
     </Row>
   );

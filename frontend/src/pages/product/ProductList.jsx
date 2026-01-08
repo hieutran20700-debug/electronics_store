@@ -34,16 +34,20 @@ const productData = [
 ];
 
 const ProductList = ({data}) => {
-
+  console.log(data)
     return (
       <>
         {data.map((item) => (
-            <ProductCard key={item.id}
+          <Col xs={12} md={3}>
+            <ProductCard
+              key={item.id}
               img={item.thumbnail}
               name={item.name}
               price={item.maxPrice}
+              specs={item.specs}
               description={item.description}
             />
+          </Col>
         ))}
       </>
     );

@@ -35,14 +35,20 @@
         children: [
           {
             path: "",
-            element: <HomePage />
+            element: <HomePage />,
           },
+         
+        ],
+      },
+      {
+        path: "/auth",
+        children: [
           {
             path: "login",
-            element: <Login />
-          }
-        ]
-      }
+            element: <Login />,
+          },
+        ],
+      },
     ];
         
     export default routes;
