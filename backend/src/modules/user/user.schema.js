@@ -44,8 +44,8 @@ const userSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // Tự động tạo createdAt và updatedAt
-    collection: COLLECTION_NAME,
+    timestamps: true, 
+    collection: "user",
   }
 );
 

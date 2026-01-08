@@ -1,5 +1,5 @@
 import React from "react";
-import "../../assets/styles/admin/sidebar.css";
+import "../../../assets/styles/admin/sidebar.css";
 import { SiAudiotechnica } from "react-icons/si";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";

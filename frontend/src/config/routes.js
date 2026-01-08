@@ -1,8 +1,11 @@
-    import AdminLayout from "../layouts/AdminLayout"
-    import Dashboard from "../pages/admin/Dashboard"
+    import AdminLayout from "../layouts/AdminLayout";
+    import MainLayout from "../layouts/MainLayout";
+    import Dashboard from "../pages/admin/Dashboard";
+    import Login from "../pages/auth/Login";
     import Users from "../pages/admin/Users";
     import Products from "../pages/admin/Products";
     import Categories from "../pages/admin/Categories";
+    import HomePage from "../pages/home/HomePage";
     const routes = [
       {
         path: "/admin",
@@ -26,6 +29,20 @@
           },
         ],
       },
+      {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+          {
+            path: "",
+            element: <HomePage />
+          },
+          {
+            path: "login",
+            element: <Login />
+          }
+        ]
+      }
     ];
         
     export default routes;

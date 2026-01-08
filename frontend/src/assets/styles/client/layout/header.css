@@ -1,0 +1,41 @@
+.header{
+    padding: 20px 15px;
+}
+
+.logo{
+    text-decoration: none;
+}
+
+.logo h1{
+    font-size: 24px;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+.custom-row-header{
+    align-items: center;
+  
+}
+
+.options-user{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+}
+
+.options-user-item{
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 6px;
+    color: var(--color-primary);
+    cursor: pointer ;
+    border-radius: 13px;
+    transition: background-color 0.3s ease;
+}
+
+.options-user-item:hover{
+    background-color: var(--color-primary-blur);
+}
