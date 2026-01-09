@@ -1,0 +1,14 @@
+/* categories-table.css */
+td,
+ th {
+  padding: 0.3rem 0.5rem; /* giảm padding ngang và dọc */
+  font-size: 0.85rem;      /* giảm font size */
+  vertical-align: middle;  /* canh giữa nội dung theo chiều dọc */
+}
+
+.table-wrapper{
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}

@@ -10,8 +10,8 @@ const ProductCard = ({ img, name, price, description, specs }) => {
       <p className="product-name">{name}</p>
       <p className="product-price">{price.toLocaleString("vi-VN")} đ</p>
       <div className="product-spec">
-        {specs.map((s) => (
-          <div className="product-spec-item">{s.value}</div>
+        {specs.map((s, index) => (
+          <div key={index} className="product-spec-item">{s.value}</div>
         ))}
       </div>
       <p className="product-desc m-0">{description}</p>
